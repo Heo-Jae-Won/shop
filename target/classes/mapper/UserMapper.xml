@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+	<select id="read" resultType="com.example.domain.UserVO">
+		select u_name, u_gender, u_birth from
+		tbl_user where u_id=#{u_id}
+	</select>
+
+	<insert id="create">
+		insert tbl_user(u_name,u_birth,u_gender,u_id,u_password)
+		values(#{u_name},#{u_birth},#{u_gender},#{u_id},#{u_password})
+	</insert>
+
+	<delete id="delete">
+		delete from tbl_user where u_id=#{u_id}
+	</delete>
+
+	<update id="update">
+		update tbl_user set u_name=#{u_name}, u_birth=#{u_birth}, u_gender=#{u_gender},
+		u_id=#{u_id}, u_password=#{u_password}
+		where u_id=#{u_id}
+	</update>
+	
+	<select id="getTime" resultType="String">
+		select now()
+	</select>
+	
+	
+</mapper>
